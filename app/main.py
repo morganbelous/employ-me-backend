@@ -22,7 +22,7 @@ def hello_world():
 @app.route('/api/jobs/')
 def get_jobs():
     jobs = Job.query.all()
-    res = {'success': True, 'data': [j.serialize() for j in jobs]}
+    res = {'success': True, 'data': {'jobs': [j.serialize() for j in jobs] }}
     return json.dumps(res), 200
 
 
