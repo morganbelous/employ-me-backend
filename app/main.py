@@ -53,5 +53,15 @@ def get_job(job_id):
         return json.dumps({'success': False, 'error': 'Job not found'}), 404
     return json.dumps({'success': True, 'data': job.serialize()}), 200
 
+
+@app.route('/api/job/<int:job_id>/', methods=['DELETE'])
+def delete_club(job_id):
+    job = Job.query.filter_by(id=job_id).first()
+    if not job:
+        return json.dumps({'success': False, 'error': 'Job not found'}), 404
+    db.session.delete(job)
+    db.session.commit()
+    return json.dumps({'success': True, 'data': job.serialize()}), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
