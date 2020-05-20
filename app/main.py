@@ -22,7 +22,7 @@ def hello_world():
 @app.route('/api/jobs/')
 def get_jobs():
     jobs = Job.query.all()
-    res = {'success': True, 'data': {'jobs': [j.serialize() for j in jobs] }}
+    res = {'success': True, 'data': [j.serialize() for j in jobs]}
     return json.dumps(res), 200
 
 
@@ -43,8 +43,7 @@ def create_job():
     )
     db.session.add(job)
     db.session.commit()
-    res = {'success': True, 'data': {'jobs': job.serialize()}}
-    return json.dumps(res), 200
+    return json.dumps({'success': True, 'data': job.serialize()}), 200
 
 
 @app.route('/api/job/<int:job_id>/')
