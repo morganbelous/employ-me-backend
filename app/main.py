@@ -43,7 +43,8 @@ def create_job():
     )
     db.session.add(job)
     db.session.commit()
-    return json.dumps({'success': True, 'data': job.serialize()}), 200
+    res = {'success': True, 'data': {'jobs': job.serialize()}}
+    return json.dumps(res), 200
 
 
 @app.route('/api/job/<int:job_id>/')
