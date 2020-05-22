@@ -55,7 +55,7 @@ def get_job(job_id):
 
 
 @app.route('/api/job/<int:job_id>/', methods=['DELETE'])
-def delete_club(job_id):
+def delete_job(job_id):
     job = Job.query.filter_by(id=job_id).first()
     if not job:
         return json.dumps({'success': False, 'error': 'Job not found'}), 404
