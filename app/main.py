@@ -34,12 +34,14 @@ def create_job():
     email = post_body.get('email', '')
     price = post_body.get('price', '')
     bio = post_body.get('bio', '')
+    imageName = 'empty-image'
     job = Job(
         title = title,
         name = name,
         email = email,
         price = price,
-        bio = bio
+        bio = bio,
+        imageName = imageName
     )
     db.session.add(job)
     db.session.commit()

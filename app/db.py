@@ -10,6 +10,7 @@ class Job(db.Model):
     email = db.Column(db.String, nullable = False)
     price = db.Column(db.String, nullable = False)
     bio = db.Column(db.String, nullable = False)
+    imageName = db.Column(db.String, nullable = False)
 
     def __init__(self, **kwargs):
         self.title = kwargs.get('title', '')
@@ -17,6 +18,7 @@ class Job(db.Model):
         self.email = kwargs.get('email', '')
         self.price = kwargs.get('price', '')
         self.bio = kwargs.get('bio', '')
+        self.imageName = kwargs.get('imageName', '')
 
     def serialize(self):
         return {
@@ -25,5 +27,6 @@ class Job(db.Model):
             'name': self.name,
             'email': self.email,
             'price': self.price,
-            'bio': self.bio
+            'bio': self.bio,
+            'imageName': self.imageName    
         }
