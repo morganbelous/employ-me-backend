@@ -34,7 +34,7 @@ def create_job():
     email = post_body.get('email', '')
     price = post_body.get('price', '')
     bio = post_body.get('bio', '')
-    imageName = 'empty-image'
+    imageName = post_body.get('imageName', 'empty-image')
     job = Job(
         title = title,
         name = name,
